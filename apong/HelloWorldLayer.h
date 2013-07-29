@@ -1,34 +1,35 @@
-//
-//  HelloWorldLayer.h
-//  apong
-//
-//  Created by Sang Won Lee on 7/28/13.
-//  Copyright Sang Won Lee 2013. All rights reserved.
-//
-
-
-#import <GameKit/GameKit.h>
-
-// When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import "Box2D.h"
-#import "GLES-Render.h"
+#import "MyContactListener.h"
+#import "SimpleAudioEngine.h"
 
-//Pixel to metres ratio. Box2D uses metres as the unit for measurement.
-//This ratio defines how many pixels correspond to 1 Box2D "metre"
-//Box2D is optimized for objects of 1x1 metre therefore it makes sense
-//to define the ratio so that your most common object type is 1x1 metre.
-#define PTM_RATIO 32
 
-// HelloWorldLayer
-@interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
-{
-	CCTexture2D *spriteTexture_;	// weak ref
-	b2World* world;					// strong ref
-	GLESDebugDraw *m_debugDraw;		// strong ref
+#define PTM_RATIO 32.0
+
+@interface HelloWorldLayer : CCLayer {
+    
+    b2World *_world;
+    b2Body *b_tfgroundBody;
+    b2Body *b_lrgroundBody;
+    b2Body *b_ball;
+    b2Body *b_lpaddle;
+    b2Body *b_rpaddle;
+    b2MouseJoint *l_mouseJoint;
+    b2MouseJoint *r_mouseJoint;
+
+    b2Fixture *_lpaddleFixture;
+    b2Fixture *_rpaddleFixture;
+
+    CCSprite *_ball;
+    CCSprite *_lpaddle;
+    CCSprite *_rpaddle;
+
+    MyContactListener *_contactListener;
+    float screenWidth;
+    float screenHeight;
 }
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
-+(CCScene *) scene;
++ (id) scene;
+- (void)kick;
 
 @end

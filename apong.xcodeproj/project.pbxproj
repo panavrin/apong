@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7354764517A61BD500A2F7D4 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7354764417A61BD500A2F7D4 /* paddle.png */; };
+		7354764817A7287200A2F7D4 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7354764717A7287200A2F7D4 /* MyContactListener.mm */; };
+		7354764B17A72B3600A2F7D4 /* ticks.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7354764917A72B3500A2F7D4 /* ticks.wav */; };
+		7354764C17A72B3600A2F7D4 /* ting.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7354764A17A72B3500A2F7D4 /* ting.wav */; };
+		7354764E17A72CDC00A2F7D4 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7354764D17A72CDC00A2F7D4 /* gameover.wav */; };
 		73CD5A5217A5FD0200D7078E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CD5A5117A5FD0200D7078E /* QuartzCore.framework */; };
 		73CD5A5417A5FD0200D7078E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CD5A5317A5FD0200D7078E /* OpenGLES.framework */; };
 		73CD5A5617A5FD0200D7078E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CD5A5517A5FD0200D7078E /* OpenAL.framework */; };
@@ -188,9 +193,16 @@
 		73CD5C9117A5FD0C00D7078E /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73CD5C9017A5FD0C00D7078E /* IntroLayer.mm */; };
 		73CD5C9417A5FD0C00D7078E /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73CD5C9317A5FD0C00D7078E /* GLES-Render.mm */; };
 		73CD5C9617A5FD0C00D7078E /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 73CD5C9517A5FD0C00D7078E /* blocks.png */; };
+		73CD5C9D17A602D600D7078E /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 73CD5C9C17A602D600D7078E /* ball.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7354764417A61BD500A2F7D4 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paddle.png; path = Resources/paddle.png; sourceTree = "<group>"; };
+		7354764617A7287100A2F7D4 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		7354764717A7287200A2F7D4 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
+		7354764917A72B3500A2F7D4 /* ticks.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticks.wav; sourceTree = "<group>"; };
+		7354764A17A72B3500A2F7D4 /* ting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ting.wav; sourceTree = "<group>"; };
+		7354764D17A72CDC00A2F7D4 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
 		73CD5A4E17A5FD0200D7078E /* apong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = apong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CD5A5117A5FD0200D7078E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		73CD5A5317A5FD0200D7078E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -569,6 +581,7 @@
 		73CD5C9217A5FD0C00D7078E /* GLES-Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		73CD5C9317A5FD0C00D7078E /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		73CD5C9517A5FD0C00D7078E /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		73CD5C9C17A602D600D7078E /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball.png; path = Resources/ball.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -637,6 +650,8 @@
 				73CD5C9017A5FD0C00D7078E /* IntroLayer.mm */,
 				73CD5C9217A5FD0C00D7078E /* GLES-Render.h */,
 				73CD5C9317A5FD0C00D7078E /* GLES-Render.mm */,
+				7354764617A7287100A2F7D4 /* MyContactListener.h */,
+				7354764717A7287200A2F7D4 /* MyContactListener.mm */,
 				73CD5A6617A5FD0200D7078E /* Resources */,
 				73CD5A7E17A5FD0200D7078E /* libs */,
 				73CD5C8517A5FD0C00D7078E /* Supporting Files */,
@@ -647,6 +662,11 @@
 		73CD5A6617A5FD0200D7078E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7354764D17A72CDC00A2F7D4 /* gameover.wav */,
+				7354764917A72B3500A2F7D4 /* ticks.wav */,
+				7354764A17A72B3500A2F7D4 /* ting.wav */,
+				7354764417A61BD500A2F7D4 /* paddle.png */,
+				73CD5C9C17A602D600D7078E /* ball.png */,
 				73CD5A6717A5FD0200D7078E /* Default.png */,
 				73CD5A6917A5FD0200D7078E /* Default@2x.png */,
 				73CD5A6B17A5FD0200D7078E /* Default-568h@2x.png */,
@@ -1248,6 +1268,11 @@
 				73CD5A7D17A5FD0200D7078E /* iTunesArtwork in Resources */,
 				73CD5BD617A5FD0800D7078E /* ChangeLog in Resources */,
 				73CD5C9617A5FD0C00D7078E /* blocks.png in Resources */,
+				73CD5C9D17A602D600D7078E /* ball.png in Resources */,
+				7354764517A61BD500A2F7D4 /* paddle.png in Resources */,
+				7354764B17A72B3600A2F7D4 /* ticks.wav in Resources */,
+				7354764C17A72B3600A2F7D4 /* ting.wav in Resources */,
+				7354764E17A72CDC00A2F7D4 /* gameover.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1416,6 +1441,7 @@
 				73CD5C8E17A5FD0C00D7078E /* HelloWorldLayer.mm in Sources */,
 				73CD5C9117A5FD0C00D7078E /* IntroLayer.mm in Sources */,
 				73CD5C9417A5FD0C00D7078E /* GLES-Render.mm in Sources */,
+				7354764817A7287200A2F7D4 /* MyContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1533,6 +1559,7 @@
 				73CD5C9B17A5FD0C00D7078E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
