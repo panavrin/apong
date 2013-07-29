@@ -290,7 +290,7 @@ float threshold = 0.5;
 
 
 - (void)kick: (CCMenuItemLabel *) item {
-    b2Vec2 force = b2Vec2(-30, 30);
+    b2Vec2 force = b2Vec2(-50, 30);
     b_ball->ApplyLinearImpulse(force,b_ball->GetPosition());
         
 }
@@ -314,7 +314,7 @@ float threshold = 0.5;
                                     b->GetPosition().y * PTM_RATIO);
             ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
             
-            static int maxSpeed = 10;
+            static int maxSpeed = 70;
             
             b2Vec2 velocity = b_ball->GetLinearVelocity();
             float32 speed = velocity.Length();
