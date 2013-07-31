@@ -15,11 +15,13 @@
     
     if ((self=[super init])) {
         
-        [self setTouchEnabled:YES];
-        
+		  [self setTouchEnabled:YES];
+       
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"ticks.wav"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"ting.wav"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"gameover.wav"];
+		 [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"back pulse.wav"];	
+		 [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"back pulse.wav" loop:YES];
 
         CGSize winSize = [CCDirector sharedDirector].winSize;
         float width = winSize.width;
@@ -27,7 +29,7 @@
         
         screenWidth = winSize.width;
         screenHeight = winSize.height;
-        CCLabelTTF * kickBallLabel = [CCLabelTTF labelWithString:@"Start" fontName:@"Arial" fontSize:32];
+        CCLabelTTF * kickBallLabel = [CCLabelTTF labelWithString:@"Start" fontName:@"Avenir Next" fontSize:32];
         CCMenuItemLabel * kickBall = [CCMenuItemLabel itemWithLabel: kickBallLabel target: self selector : @selector(kick:)];
         CCMenu * menu = [CCMenu menuWithItems:kickBall, nil];
         menu.position =  ccp( width/2 , height/2 );
@@ -82,11 +84,11 @@
         
 
         
-        lrgroundEdge.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), // right wall
-                       b2Vec2(winSize.width/PTM_RATIO, 0));
+        lrgroundEdge.Set(b2Vec2((winSize.width+60)/PTM_RATIO, winSize.height/PTM_RATIO), // right wall
+                       b2Vec2((winSize.width+60)/PTM_RATIO, 0));
         b_lrgroundBody->CreateFixture(&lrboxShapeDef);
         
-        lrgroundEdge.Set(b2Vec2(0,0), b2Vec2(0,winSize.height/PTM_RATIO)); // left wall
+        lrgroundEdge.Set(b2Vec2(-60/PTM_RATIO,0), b2Vec2(-60/PTM_RATIO,winSize.height/PTM_RATIO)); // left wall
         b_lrgroundBody->CreateFixture(&lrboxShapeDef);
         
         // Create ball body and shape
@@ -290,9 +292,9 @@ float threshold = 0.5;
 
 
 - (void)kick: (CCMenuItemLabel *) item {
-    b2Vec2 force = b2Vec2(-50, 30);
+    b2Vec2 force = b2Vec2(-25, 15);
     b_ball->ApplyLinearImpulse(force,b_ball->GetPosition());
-        
+	
 }
 
 - (void) reset{
@@ -344,15 +346,24 @@ float threshold = 0.5;
         }
         else {
             
-            for (b2Fixture* f = b_lrgroundBody->GetFixtureList(); f; f = f->GetNext())
-            {
-                if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == f) ||
-                    (contact.fixtureA == f && contact.fixtureB == b_ball->GetFixtureList())) {
-                    
-                    [[SimpleAudioEngine sharedEngine] playEffect: @"gameover.wav"];
-                    [self reset];
-                }
-            }
+//            for (b2Fixture* f = b_lrgroundBody->GetFixtureList(); f; f = f->GetNext())
+//            {
+//                if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == f) ||
+//                    (contact.fixtureA == f && contact.fixtureB == b_ball->GetFixtureList())) {
+//                    
+//                    [[SimpleAudioEngine sharedEngine] playEffect: @"gameover.wav"];
+//                    [self reset];
+//                }
+//            }
+			  
+			  if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == b_lrgroundBody->GetFixtureList()) ||
+					(contact.fixtureA == b_lrgroundBody->GetFixtureList() && contact.fixtureB == b_ball->GetFixtureList())) {
+				  
+				  [[SimpleAudioEngine sharedEngine] playEffect: @"gameover.wav"];
+				  [self reset];
+			  }
+
+			  
             for (b2Fixture* f = b_tfgroundBody->GetFixtureList(); f; f = f->GetNext())
             {
                 if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == f) ||
@@ -361,10 +372,20 @@ float threshold = 0.5;
                     [[SimpleAudioEngine sharedEngine] playEffect: @"ticks.wav"];
                 }
             }
-
         }
     }
-    
+	
+	
+	// find velocity of the ball
+
+//	if (b_ball->GetLinearVelocity() )
+	
+	[SimpleAudioEngine sharedEngine].backgroundMusicVolume =
+										b_ball->GetPosition().x * PTM_RATIO / screenWidth;
+		// set backgroundMusicVolume based on how far the ball is
+		
+		
+//	NSLog(@"%f",b_ball->GetPosition().x);
 }
 
 
