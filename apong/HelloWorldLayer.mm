@@ -101,7 +101,7 @@
         // Create ball body and shape
         b2BodyDef ballBodyDef;
         ballBodyDef.type = b2_dynamicBody;
-        ballBodyDef.position.Set((width - 100)/PTM_RATIO, (height/2.0)/PTM_RATIO);
+        ballBodyDef.position.Set((width - 110)/PTM_RATIO, (height/2.0)/PTM_RATIO);
         
         ballBodyDef.userData = _ball;
         b_ball = _world->CreateBody(&ballBodyDef);
@@ -339,7 +339,7 @@ float threshold = 0.5;
     b_ball->SetLinearVelocity(b2Vec2(0,0));
     b_ball->SetAngularVelocity(0);
 
-    b_ball->SetTransform(b2Vec2((screenWidth - 100)/PTM_RATIO, (screenHeight/2.0)/PTM_RATIO), 0);
+    b_ball->SetTransform(b2Vec2((screenWidth - 110)/PTM_RATIO, (screenHeight/2.0)/PTM_RATIO), 0);
     
 }
 
@@ -383,22 +383,22 @@ float threshold = 0.5;
         }
         else {
             
-//            for (b2Fixture* f = b_lrgroundBody->GetFixtureList(); f; f = f->GetNext())
-//            {
-//                if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == f) ||
-//                    (contact.fixtureA == f && contact.fixtureB == b_ball->GetFixtureList())) {
-//                    
-//                    [[SimpleAudioEngine sharedEngine] playEffect: @"gameover.wav"];
-//                    [self reset];
-//                }
-//            }
-			  
-			  if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == b_lrgroundBody->GetFixtureList()) ||
-					(contact.fixtureA == b_lrgroundBody->GetFixtureList() && contact.fixtureB == b_ball->GetFixtureList())) {
-				  
-				  [[SimpleAudioEngine sharedEngine] playEffect: @"gameover.wav"];
-				  [self reset];
-			  }
+            for (b2Fixture* f = b_lrgroundBody->GetFixtureList(); f; f = f->GetNext())
+            {
+                if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == f) ||
+                    (contact.fixtureA == f && contact.fixtureB == b_ball->GetFixtureList())) {
+                    
+                    [[SimpleAudioEngine sharedEngine] playEffect: @"gameover.wav"];
+                    [self reset];
+                }
+            }
+//			  
+//			  if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == b_lrgroundBody->GetFixtureList()) ||
+//					(contact.fixtureA == b_lrgroundBody->GetFixtureList() && contact.fixtureB == b_ball->GetFixtureList())) {
+//				  
+//				  [[SimpleAudioEngine sharedEngine] playEffect: @"gameover.wav"];
+//				  [self reset];
+//			  }
 
 			  
             for (b2Fixture* f = b_tfgroundBody->GetFixtureList(); f; f = f->GetNext())
@@ -418,7 +418,7 @@ float threshold = 0.5;
 //	if (b_ball->GetLinearVelocity() )
 	
 	[SimpleAudioEngine sharedEngine].backgroundMusicVolume =
-										b_ball->GetPosition().x * PTM_RATIO / screenWidth;
+										(screenWidth - 110 - b_ball->GetPosition().x  * PTM_RATIO) / (screenWidth - 110 );
 		// set backgroundMusicVolume based on how far the ball is
 		
 		
