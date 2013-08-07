@@ -32,18 +32,25 @@
         CCMenu * menu = [CCMenu menuWithItems:kickBall, nil];
         menu.position =  ccp( width/2 , height/2 );
         [self addChild:menu];
+        MyMenuItemImage * appearBar = [MyMenuItemImage itemWithNormalImage:@"button_off.png" selectedImage:@"button_on.png" target:self selector:@selector(appearBar:)];
+        CCMenu * menu2 = [CCMenu menuWithItems:appearBar, nil];
+        menu2.position =  ccp( width/2 , 60);
+        [self addChild:menu2];
+
         // Create sprite and add it to the layer
         _ball = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 52, 52)];
         _ball.position = ccp(width - 100.0, height/2.0);
         
         _lpaddle = [CCSprite spriteWithFile:@"paddle.png"];
         _rpaddle = [CCSprite spriteWithFile:@"paddle.png"];
-        
+        _rbar = [CCSprite spriteWithFile:@"rbar.png"];
         _lpaddle.position = ccp(50.0, height/2);
-        _rpaddle.position = ccp(width - 50.0, height/2);
+        _rpaddle.position = ccp(width +100, height/2);
+        _rbar.position = ccp(width-50.0,height/2);
         
         [self addChild:_lpaddle];
         [self addChild:_rpaddle];
+        [self addChild:_rbar];
         [self addChild:_ball];
         [_lpaddle runAction:[CCMoveTo actionWithDuration:1 position:ccp(500,600)]];
          [self schedule:@selector(nextFrame:)];
@@ -107,7 +114,7 @@
         ballShapeDef.restitution = 1.0f;
         b_ball->CreateFixture(&ballShapeDef);
         
-        // Create left paddle and right paddle bodies
+        // Create left paddle bodies
      
         b2BodyDef lPaddleBodyDef;
         
@@ -127,13 +134,13 @@
         lPaddleShapeDef.restitution = 0.8f;
         _lpaddleFixture = b_lpaddle->CreateFixture(&lPaddleShapeDef);
        
-        // Create left paddle and right paddle bodies
+        // Create right paddle bodies
         
         b2BodyDef rPaddleBodyDef;
-        rPaddleBodyDef.position.Set((width-50.0)/PTM_RATIO, height/2.0/PTM_RATIO);
+        rPaddleBodyDef.position.Set((width+100.0)/PTM_RATIO, height/2.0/PTM_RATIO);
         rPaddleBodyDef.userData = _rpaddle;
         rPaddleBodyDef.type = b2_dynamicBody;
-
+        
         b_rpaddle = _world->CreateBody(&rPaddleBodyDef);
         
         b2PolygonShape rBoxShape;
@@ -145,6 +152,25 @@
         rPaddleShapeDef.friction = 0.2f;
         rPaddleShapeDef.restitution = 0.8f;
         _rpaddleFixture = b_rpaddle->CreateFixture(&rPaddleShapeDef);
+        
+        // Create right bar bodies
+        
+        b2BodyDef rightBarBodyDef;
+        rightBarBodyDef.position.Set((width+100.0)/PTM_RATIO, height/2.0/PTM_RATIO);
+        rightBarBodyDef.userData = _rbar;
+        rightBarBodyDef.type = b2_staticBody;
+        
+        b_rBar = _world->CreateBody(&rightBarBodyDef);
+        
+        b2PolygonShape rBarBoxShape;
+        rBarBoxShape.SetAsBox(25.0/PTM_RATIO, 750.0/2/PTM_RATIO);
+        
+        b2FixtureDef rBarShapeDef;
+        rBarShapeDef.shape = &rBarBoxShape;
+        rBarShapeDef.density = 1.0f;
+        rBarShapeDef.friction = 0.2f;
+        rBarShapeDef.restitution = 0.8f;
+        _rBarFixture = b_rBar->CreateFixture(&rBarShapeDef);
         
         [self schedule:@selector(tick:)];
 
@@ -294,6 +320,17 @@ float threshold = 0.5;
     b_ball->ApplyLinearImpulse(force,b_ball->GetPosition());
         
 }
+-(void) restoreBar{
+    NSLog(@"restore");
+    b_rBar->SetTransform(b2Vec2((screenWidth + 100)/PTM_RATIO, (screenHeight/2.0)/PTM_RATIO), 0);
+
+}
+-(void) appearBar:(CCMenuItemLabel *) item {
+    NSLog(@"appearBar");
+
+    b_rBar->SetTransform(b2Vec2((screenWidth - 50)/PTM_RATIO, (screenHeight/2.0)/PTM_RATIO), 0);
+    [_rbar runAction:[CCSequence actions:[CCFadeOut actionWithDuration:0.5], [CCCallFunc actionWithTarget:self selector:@selector(restoreBar)],[CCFadeIn actionWithDuration:0.01], nil]];
+}
 
 - (void) reset{
     NSLog(@"Game Over");
@@ -335,8 +372,8 @@ float threshold = 0.5;
         pos != _contactListener->_contacts.end(); ++pos) {
         MyContact contact = *pos;
         
-        if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == b_rpaddle->GetFixtureList()) ||
-            (contact.fixtureA == b_rpaddle->GetFixtureList() && contact.fixtureB == b_ball->GetFixtureList())||(contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == b_lpaddle->GetFixtureList()) ||
+        if ((contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == b_rBar->GetFixtureList()) ||
+            (contact.fixtureA == b_rBar->GetFixtureList() && contact.fixtureB == b_ball->GetFixtureList())||(contact.fixtureA == b_ball->GetFixtureList() && contact.fixtureB == b_lpaddle->GetFixtureList()) ||
             (contact.fixtureA == b_lpaddle->GetFixtureList() && contact.fixtureB == b_ball->GetFixtureList())) {
             NSLog(@"Ball hit a paddle!");
             [[SimpleAudioEngine sharedEngine] playEffect: @"ting.wav"];

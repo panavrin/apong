@@ -12,6 +12,10 @@
 		7354764B17A72B3600A2F7D4 /* ticks.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7354764917A72B3500A2F7D4 /* ticks.wav */; };
 		7354764C17A72B3600A2F7D4 /* ting.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7354764A17A72B3500A2F7D4 /* ting.wav */; };
 		7354764E17A72CDC00A2F7D4 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7354764D17A72CDC00A2F7D4 /* gameover.wav */; };
+		735AEB1417B20B0700FA4B32 /* rbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 735AEB1317B20B0700FA4B32 /* rbar.png */; };
+		735AEB1717B218EA00FA4B32 /* button_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 735AEB1517B218EA00FA4B32 /* button_off.png */; };
+		735AEB1817B218EA00FA4B32 /* button_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 735AEB1617B218EA00FA4B32 /* button_on.png */; };
+		735AEB1D17B2224000FA4B32 /* MyMenuItemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 735AEB1C17B2224000FA4B32 /* MyMenuItemImage.m */; };
 		73CD5A5217A5FD0200D7078E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CD5A5117A5FD0200D7078E /* QuartzCore.framework */; };
 		73CD5A5417A5FD0200D7078E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CD5A5317A5FD0200D7078E /* OpenGLES.framework */; };
 		73CD5A5617A5FD0200D7078E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CD5A5517A5FD0200D7078E /* OpenAL.framework */; };
@@ -203,6 +207,11 @@
 		7354764917A72B3500A2F7D4 /* ticks.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticks.wav; sourceTree = "<group>"; };
 		7354764A17A72B3500A2F7D4 /* ting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ting.wav; sourceTree = "<group>"; };
 		7354764D17A72CDC00A2F7D4 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
+		735AEB1317B20B0700FA4B32 /* rbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rbar.png; path = Resources/rbar.png; sourceTree = "<group>"; };
+		735AEB1517B218EA00FA4B32 /* button_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_off.png; path = Resources/button_off.png; sourceTree = "<group>"; };
+		735AEB1617B218EA00FA4B32 /* button_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_on.png; path = Resources/button_on.png; sourceTree = "<group>"; };
+		735AEB1B17B2224000FA4B32 /* MyMenuItemImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMenuItemImage.h; sourceTree = "<group>"; };
+		735AEB1C17B2224000FA4B32 /* MyMenuItemImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMenuItemImage.m; sourceTree = "<group>"; };
 		73CD5A4E17A5FD0200D7078E /* apong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = apong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CD5A5117A5FD0200D7078E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		73CD5A5317A5FD0200D7078E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -646,6 +655,8 @@
 				73CD5C8A17A5FD0C00D7078E /* AppDelegate.mm */,
 				73CD5C8C17A5FD0C00D7078E /* HelloWorldLayer.h */,
 				73CD5C8D17A5FD0C00D7078E /* HelloWorldLayer.mm */,
+				735AEB1B17B2224000FA4B32 /* MyMenuItemImage.h */,
+				735AEB1C17B2224000FA4B32 /* MyMenuItemImage.m */,
 				73CD5C8F17A5FD0C00D7078E /* IntroLayer.h */,
 				73CD5C9017A5FD0C00D7078E /* IntroLayer.mm */,
 				73CD5C9217A5FD0C00D7078E /* GLES-Render.h */,
@@ -662,6 +673,9 @@
 		73CD5A6617A5FD0200D7078E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				735AEB1517B218EA00FA4B32 /* button_off.png */,
+				735AEB1617B218EA00FA4B32 /* button_on.png */,
+				735AEB1317B20B0700FA4B32 /* rbar.png */,
 				7354764D17A72CDC00A2F7D4 /* gameover.wav */,
 				7354764917A72B3500A2F7D4 /* ticks.wav */,
 				7354764A17A72B3500A2F7D4 /* ting.wav */,
@@ -1273,6 +1287,9 @@
 				7354764B17A72B3600A2F7D4 /* ticks.wav in Resources */,
 				7354764C17A72B3600A2F7D4 /* ting.wav in Resources */,
 				7354764E17A72CDC00A2F7D4 /* gameover.wav in Resources */,
+				735AEB1417B20B0700FA4B32 /* rbar.png in Resources */,
+				735AEB1717B218EA00FA4B32 /* button_off.png in Resources */,
+				735AEB1817B218EA00FA4B32 /* button_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1442,6 +1459,7 @@
 				73CD5C9117A5FD0C00D7078E /* IntroLayer.mm in Sources */,
 				73CD5C9417A5FD0C00D7078E /* GLES-Render.mm in Sources */,
 				7354764817A7287200A2F7D4 /* MyContactListener.mm in Sources */,
+				735AEB1D17B2224000FA4B32 /* MyMenuItemImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
