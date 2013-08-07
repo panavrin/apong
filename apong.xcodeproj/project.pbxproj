@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22405F1117A9AE39001D898C /* back pulse.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22405F1017A9AE39001D898C /* back pulse.wav */; };
 		7354764517A61BD500A2F7D4 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7354764417A61BD500A2F7D4 /* paddle.png */; };
 		7354764817A7287200A2F7D4 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7354764717A7287200A2F7D4 /* MyContactListener.mm */; };
 		7354764B17A72B3600A2F7D4 /* ticks.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7354764917A72B3500A2F7D4 /* ticks.wav */; };
@@ -201,6 +202,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22405F1017A9AE39001D898C /* back pulse.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "back pulse.wav"; sourceTree = "<group>"; };
 		7354764417A61BD500A2F7D4 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paddle.png; path = Resources/paddle.png; sourceTree = "<group>"; };
 		7354764617A7287100A2F7D4 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
 		7354764717A7287200A2F7D4 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
@@ -673,9 +675,13 @@
 		73CD5A6617A5FD0200D7078E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				735AEB1517B218EA00FA4B32 /* button_off.png */,
 				735AEB1617B218EA00FA4B32 /* button_on.png */,
 				735AEB1317B20B0700FA4B32 /* rbar.png */,
+=======
+				22405F1017A9AE39001D898C /* back pulse.wav */,
+>>>>>>> 908c5fd19d1c40f2449fe0946659f8ba7b8afaee
 				7354764D17A72CDC00A2F7D4 /* gameover.wav */,
 				7354764917A72B3500A2F7D4 /* ticks.wav */,
 				7354764A17A72B3500A2F7D4 /* ting.wav */,
@@ -1287,9 +1293,13 @@
 				7354764B17A72B3600A2F7D4 /* ticks.wav in Resources */,
 				7354764C17A72B3600A2F7D4 /* ting.wav in Resources */,
 				7354764E17A72CDC00A2F7D4 /* gameover.wav in Resources */,
+<<<<<<< HEAD
 				735AEB1417B20B0700FA4B32 /* rbar.png in Resources */,
 				735AEB1717B218EA00FA4B32 /* button_off.png in Resources */,
 				735AEB1817B218EA00FA4B32 /* button_on.png in Resources */,
+=======
+				22405F1117A9AE39001D898C /* back pulse.wav in Resources */,
+>>>>>>> 908c5fd19d1c40f2449fe0946659f8ba7b8afaee
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
